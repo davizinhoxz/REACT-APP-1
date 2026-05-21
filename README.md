@@ -17,3 +17,9 @@ If you are developing a production application, we recommend using TypeScript wi
 
 #inicial projeto
 npm run dev
+
+icons
+https://www.flaticon.com
+
+Coisas que podemos reutilizar
+https://getbootstrap.com/docs/4.1/getting-started/introduction/
