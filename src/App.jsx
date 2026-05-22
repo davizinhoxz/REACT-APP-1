@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import Mensagem from './Mensagem';
+import Formulario from './Formulario';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
       {/* Cada componente recebe props diferentes */}
       <Mensagem myText="Bem-vindo à tua primeira aplicação React!" />
       <Mensagem myText="Os componentes permitem reutilizar código!" />
+      <Formulario/>
+
     </div>
   );
 }
