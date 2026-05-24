@@ -7,6 +7,7 @@ import Mensagem from './Mensagem';
 import Contador from './Contador';
 import Formulario from './Formulario';
 import Tarefas from './Tarefas';
+import Alerta from './Alerta';
 
 function App() {
   return (
@@ -28,6 +29,12 @@ function App() {
       {/* Cada componente recebe props diferentes */}
       <Mensagem myText="Bem-vindo à tua primeira aplicação React!" />
       <Mensagem myText="Os componentes permitem reutilizar código!" />
+
+
+      <Alerta tipo="success" texto="O Dinis" />
+      <Alerta tipo="danger" texto="é muito" />
+      <Alerta tipo="warning" texto="muito buro bradier" />
+
       <Formulario/>
       <Tarefas/>
 
