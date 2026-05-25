@@ -6,7 +6,7 @@ import './App.css'
 import Mensagem from './Mensagem';
 import Contador from './Contador';
 import Formulario from './Formulario';
-import Tarefas from './Tarefas';
+import Notas from './Notas';
 import Alerta from './Alerta';
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
       <Alerta tipo="warning" texto="muito buro bradier" />
 
       <Formulario/>
-      <Tarefas/>
+      <Notas/>
 
     </div>
   );
