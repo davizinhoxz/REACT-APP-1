@@ -4,118 +4,144 @@ function Notas() {
 
     const [formData, setFormData] = useState({
         id: '',
-        titulo: '',
-        data: '',
-        descricao: ''
+        nome: '',
+        disciplina: '',
+        notaTeste: '',
+        notaTrabalho: '',
+        notaAtitudes: '',
+        testes: '',
+        trabalhos: '',
+        atitudes: ''
     });
 
-    const [tarefas, setTarefas] = useState([]);
-
+    const [notas, setNotas] = useState([]);
     const [dadosSubmetidos, setDadosSubmetidos] = useState(null);
 
-
-    // Esta função é chamada quando o formulário é submetido
     function handleSubmit(e) {
-        e.preventDefault(); // impede o recarregamento da página
-        setDadosSubmetidos(formData); // guarda os dados preenchidos
+        e.preventDefault();
+        setDadosSubmetidos(formData);
 
-        const novaTarefa = {
-            id: Date.now(), // gera um ID único com base no timestamp
-            titulo: formData.titulo,
-            data: formData.data,
-            descricao: formData.descricao
+        const novaNota = {
+            id: Date.now(),
+            nome: formData.nome,
+            disciplina: formData.disciplina,
+            notaTeste: formData.notaTeste,
+            notaTrabalho: formData.notaTrabalho,
+            notaAtitudes: formData.notaAtitudes,
+            testes: formData.testes,
+            trabalhos: formData.trabalhos,
+            atitudes: formData.atitudes
         };
-        setTarefas([...tarefas, novaTarefa]); // adiciona a nova tarefa à lista
+        setNotas([...notas, novaNota]);
     }
 
-
-    function newTarefa() {
-        const novaTarefa = {
-            id: Date.now(), // gera um ID único com base no timestamp
-            titulo: 'Euzinho',
-            data: 'euzinho',
-            descricao: 'ui ui ui ui ui ui ui ui ui ui ui ui ui ui ui ui ui ui'
-        };
-        setFormData(novaTarefa);
-        setTarefas([...tarefas, novaTarefa]); // adiciona a nova tarefa à lista
-        setDadosSubmetidos(null); // limpa os dados apresentados após adicionar a tarefa
-    }
-
-    // Limpa o formulário e os dados apresentados
     function limparFormulario() {
-        setFormData({ id: '', titulo: '', data: '', descricao: '' });
+        setFormData({ id: '', nome: '', disciplina: '', notaTeste: '', notaTrabalho: '', notaAtitudes: '', testes: '', trabalhos: '', atitudes: '' });
         setDadosSubmetidos(null);
     }
 
-
-
     return (
-        <div className="mt-4">
+        <div className="container mt-4">
 
-            <div className="col-md-6">
+            <form onSubmit={handleSubmit}>
 
-                <form onSubmit={handleSubmit}>
-                    {/* Cada campo é controlado — o valor vem do estado React */}
-                    <div className="mt-4">
-                        <label>Título</label>
-                        <input type="text" className="form-control" value={formData.titulo} onChange={(e) =>
-                            setFormData({ ...formData, titulo: e.target.value })} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Data</label>
-                        <input type="date" className="form-control" value={formData.data} onChange={(e) =>
-                            setFormData({ ...formData, data: e.target.value })} required />
-                    </div>
-                    <div className="form-group">
-                        <label>Descrição</label>
-                        <textarea className="form-control" rows="3" value={formData.descricao} onChange={(e) =>
-                            setFormData({ ...formData, descricao: e.target.value })}></textarea>
-                    </div>
-
-
-
-                    {/* Botões de ação */}
-                    <button className="btn btn-success mr-2">Enviar</button>
-
-                    <button type="button" className="btn btn-outline-secondary"
-                        onClick={limparFormulario}>Limpar</button>
-
-                    <button type="button" className="btn btn-outline-secondary"
-                        onClick={newTarefa}>Nova Tarefa</button>
-
-                </form>
-            </div >
-
-
-
-
-
-            <div className="col-6">
-                {dadosSubmetidos && (
-                    <div className="card mt-4">
-                        <div className="card-body">
-                            <h5 className="card-title">Dados Recebidos</h5>
-                            <p><strong>Título:</strong> {dadosSubmetidos.titulo}</p>
-                            <p><strong>Data:</strong> {dadosSubmetidos.data}</p>
-                            <p><strong>Descrição:</strong> {dadosSubmetidos.descricao}</p>
+                <div className="form-group">
+                    <div className="row p-2">
+                        <div className="col-md-8">
+                            <label>Nome do aluno:</label>
+                            <input type="text" className="form-control"
+                                value={formData.nome}
+                                onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                                required />
+                        </div>
+                        <div className="col-md-4">
+                            <label>Disciplina:</label>
+                            <input type="text" className="form-control"
+                                value={formData.disciplina}
+                                onChange={(e) => setFormData({ ...formData, disciplina: e.target.value })}
+                                required />
                         </div>
                     </div>
-                )}
+                </div>
 
-                <h3 className="mt-4">Notas</h3>
-                <ul className="list-group mt-4">
-                    {tarefas.map((tarefa) => (
-                        <li key={tarefa.id} className="list-group-item">
-                            <h5>{tarefa.titulo}</h5>
-                            <p>{tarefa.data}</p>
-                            <p>{tarefa.descricao}</p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+                <div className="form-group">
+                    <div className="row p-2">
+                        <div className="col-md-3">
+                            <label>Nota dos Testes:</label>
+                            <input type="number" className="form-control"
+                                value={formData.notaTeste}
+                                onChange={(e) => setFormData({ ...formData, notaTeste: e.target.value })} />
+                        </div>
+                        <div className="col-md-3">
+                            <label>(%) Testes:</label>
+                            <input type="number" className="form-control"
+                                value={formData.testes}
+                                onChange={(e) => setFormData({ ...formData, testes: e.target.value })} />
+                        </div>
+                    </div>
+                </div>
 
-        </div >
+                <div className="form-group">
+                    <div className="row p-2">
+                        <div className="col-md-3">
+                            <label>Nota dos Trabalhos:</label>
+                            <input type="number" className="form-control"
+                                value={formData.notaTrabalho}
+                                onChange={(e) => setFormData({ ...formData, notaTrabalho: e.target.value })} />
+                        </div>
+                        <div className="col-md-3">
+                            <label>(%) Trabalhos:</label>
+                            <input type="number" className="form-control"
+                                value={formData.trabalhos}
+                                onChange={(e) => setFormData({ ...formData, trabalhos: e.target.value })} />
+                        </div>
+                    </div>
+                </div>
 
+                <div className="form-group">
+                    <div className="row p-2">
+                        <div className="col-md-3">
+                            <label>Nota das Atitudes:</label>
+                            <input type="number" className="form-control"
+                                value={formData.notaAtitudes}
+                                onChange={(e) => setFormData({ ...formData, notaAtitudes: e.target.value })} />
+                        </div>
+                        <div className="col-md-3">
+                            <label>(%) Atitudes:</label>
+                            <input type="number" className="form-control"
+                                value={formData.atitudes}
+                                onChange={(e) => setFormData({ ...formData, atitudes: e.target.value })} />
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" className="btn btn-primary mr-2">Calcular</button>
+                <button type="button" className="btn btn-outline-secondary" onClick={limparFormulario}>Limpar</button>
+            </form>
+
+            {dadosSubmetidos && (
+                <div className="card mt-4">
+                    <div className="card-body">
+                        <h5 className="card-title">Dados Recebidos</h5>
+                        <p><strong>Nome do Aluno:</strong> {dadosSubmetidos.nome}</p>
+                        <p><strong>Disciplina:</strong> {dadosSubmetidos.disciplina}</p>
+                        <p><strong>Nota dos Testes:</strong> {dadosSubmetidos.notaTeste} ({dadosSubmetidos.testes}%)</p>
+                        <p><strong>Nota dos Trabalhos:</strong> {dadosSubmetidos.notaTrabalho} ({dadosSubmetidos.trabalhos}%)</p>
+                        <p><strong>Nota das Atitudes:</strong> {dadosSubmetidos.notaAtitudes} ({dadosSubmetidos.atitudes}%)</p>
+                    </div>
+                </div>
+            )}
+
+            <ul className="list-group mt-4">
+                {notas.map((nota) => (
+                    <li key={nota.id} className="list-group-item">
+                        <h5>{nota.nome} — {nota.disciplina}</h5>
+                        <p>Testes: {nota.notaTeste} ({nota.testes}%) | Trabalhos: {nota.notaTrabalho} ({nota.trabalhos}%) | Atitudes: {nota.notaAtitudes} ({nota.atitudes}%)</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
+
 export default Notas;
