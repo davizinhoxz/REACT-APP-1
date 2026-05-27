@@ -48,6 +48,16 @@ function Notas() {
         ).toFixed(1);
     }
 
+    function aprovacao(dados) {
+        const notaFinal = calcularNotaFinal(dados);
+
+        if (notaFinal >= 9.5) {
+            return "Aprovado";
+        } else {
+            return "Reprovado";
+        }
+    }
+
     return (
         <div className="container mt-4">
 
@@ -137,6 +147,7 @@ function Notas() {
                         <p><strong>Nota dos Trabalhos:</strong> {dadosSubmetidos.notaTrabalho} ({dadosSubmetidos.trabalhos}%)</p>
                         <p><strong>Nota das Atitudes:</strong> {dadosSubmetidos.notaAtitudes} ({dadosSubmetidos.atitudes}%)</p>
                         <p><strong>Nota Final:</strong> {calcularNotaFinal(dadosSubmetidos)}</p>
+                        <p><strong>Resultado:</strong> {aprovacao(dadosSubmetidos)}</p>
                     </div>
                 </div>
             )}
