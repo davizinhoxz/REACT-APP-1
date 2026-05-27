@@ -40,6 +40,14 @@ function Notas() {
         setDadosSubmetidos(null);
     }
 
+    function calcularNotaFinal(dados) {
+        return (
+            (Number(dados.notaTeste) * Number(dados.testes) / 100) +
+            (Number(dados.notaTrabalho) * Number(dados.trabalhos) / 100) +
+            (Number(dados.notaAtitudes) * Number(dados.atitudes) / 100)
+        ).toFixed(1);
+    }
+
     return (
         <div className="container mt-4">
 
@@ -107,7 +115,7 @@ function Notas() {
                                 onChange={(e) => setFormData({ ...formData, notaAtitudes: e.target.value })} />
                         </div>
                         <div className="col-md-3">
-                            <label>(%) Atitudes:</label>
+                            <label>(%) Trabalhos:</label>
                             <input type="number" className="form-control"
                                 value={formData.atitudes}
                                 onChange={(e) => setFormData({ ...formData, atitudes: e.target.value })} />
@@ -128,6 +136,7 @@ function Notas() {
                         <p><strong>Nota dos Testes:</strong> {dadosSubmetidos.notaTeste} ({dadosSubmetidos.testes}%)</p>
                         <p><strong>Nota dos Trabalhos:</strong> {dadosSubmetidos.notaTrabalho} ({dadosSubmetidos.trabalhos}%)</p>
                         <p><strong>Nota das Atitudes:</strong> {dadosSubmetidos.notaAtitudes} ({dadosSubmetidos.atitudes}%)</p>
+                        <p><strong>Nota Final:</strong> {calcularNotaFinal(dadosSubmetidos)}</p>
                     </div>
                 </div>
             )}
