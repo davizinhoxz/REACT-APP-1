@@ -90,13 +90,13 @@ function Notas() {
                             <label>Nota dos Testes:</label>
                             <input type="number" min="0" max="20" step="0.1" className="form-control"
                                 value={formData.notaTeste}
-                                onChange={(e) => setFormData({ ...formData, notaTeste: e.target.value })} />
+                                onChange={(e) => setFormData({ ...formData, notaTeste: e.target.value })} required />
                         </div>
                         <div className="col-md-3">
                             <label>(%) Testes:</label>
                             <input type="number" min="0" max="100" className="form-control"
                                 value={formData.testes}
-                                onChange={(e) => setFormData({ ...formData, testes: e.target.value })} />
+                                onChange={(e) => setFormData({ ...formData, testes: e.target.value })} required />
                         </div>
                     </div>
                 </div>
@@ -107,13 +107,13 @@ function Notas() {
                             <label>Nota dos Trabalhos:</label>
                             <input type="number" min="0" max="20" step="0.1" className="form-control"
                                 value={formData.notaTrabalho}
-                                onChange={(e) => setFormData({ ...formData, notaTrabalho: e.target.value })} />
+                                onChange={(e) => setFormData({ ...formData, notaTrabalho: e.target.value })} required />
                         </div>
                         <div className="col-md-3">
                             <label>(%) Trabalhos:</label>
                             <input type="number" min="0" max="100" className="form-control"
                                 value={formData.trabalhos}
-                                onChange={(e) => setFormData({ ...formData, trabalhos: e.target.value })} />
+                                onChange={(e) => setFormData({ ...formData, trabalhos: e.target.value })} required />
                         </div>
                     </div>
                 </div>
@@ -124,19 +124,19 @@ function Notas() {
                             <label>Nota das Atitudes:</label>
                             <input type="number" min="0" max="20" step="0.1" className="form-control"
                                 value={formData.notaAtitudes}
-                                onChange={(e) => setFormData({ ...formData, notaAtitudes: e.target.value })} />
+                                onChange={(e) => setFormData({ ...formData, notaAtitudes: e.target.value })} required />
                         </div>
                         <div className="col-md-3">
                             <label>(%) Atitudes:</label>
                             <input type="number" min="0" max="100" className="form-control"
                                 value={formData.atitudes}
-                                onChange={(e) => setFormData({ ...formData, atitudes: e.target.value })} />
+                                onChange={(e) => setFormData({ ...formData, atitudes: e.target.value })} required />
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary mr-2">Calcular</button>
-                <button type="button" className="btn btn-outline-secondary" onClick={limparFormulario}>Limpar</button>
+                <button type="submit" className="btn btn-success mr-2">Calcular</button>
+                <button type="button" className="btn btn-danger" onClick={limparFormulario}>Limpar</button>
             </form>
 
             {dadosSubmetidos && (
@@ -149,7 +149,11 @@ function Notas() {
                         <p><strong>Nota dos Trabalhos:</strong> {dadosSubmetidos.notaTrabalho} ({dadosSubmetidos.trabalhos}%)</p>
                         <p><strong>Nota das Atitudes:</strong> {dadosSubmetidos.notaAtitudes} ({dadosSubmetidos.atitudes}%)</p>
                         <p><strong>Nota Final:</strong> {calcularNotaFinal(dadosSubmetidos)}</p>
-                        <p><strong>Resultado:</strong> {aprovacao(dadosSubmetidos)}</p>
+
+                        <div className={`alert ${aprovacao(dadosSubmetidos) === 'Aprovado' ? 'alert-success' : 'alert-danger'}`} role="alert">
+                            <p><strong>Resultado:</strong> {aprovacao(dadosSubmetidos)}</p>
+                        </div>
+
                     </div>
                 </div>
             )}
