@@ -23,3 +23,5 @@ https://www.flaticon.com
 
 Coisas que podemos reutilizar
 https://getbootstrap.com/docs/4.1/getting-started/introduction/
+
+/*<button type="button" className="btn btn-outline-secondary" onClick={limparFormulario}>Limpar</button>*/

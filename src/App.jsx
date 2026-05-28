@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="container mt-4">
     
-      <h1 className="text-left">Cálculo da nota Final</h1>
-      <h2 className="text-left">Dados do Aluno</h2>
+      <h2 className="text-left">Cálculo da nota Final</h2>
+      <h4 className="text-left">Dados do Aluno</h4>
 
       <Notas/>
 

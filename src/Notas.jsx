@@ -40,6 +40,8 @@ function Notas() {
         setDadosSubmetidos(null);
     }
 
+    /*<button type="reset" class="btn btn-danger">Limpar</button>*/
+
     function calcularNotaFinal(dados) {
         return (
             (Number(dados.notaTeste) * Number(dados.testes) / 100) +
@@ -54,7 +56,7 @@ function Notas() {
         if (notaFinal >= 9.5) {
             return "Aprovado";
         } else {
-            return "Reprovado";
+            return "Reporovado";
         }
     }
 
@@ -86,13 +88,13 @@ function Notas() {
                     <div className="row p-2">
                         <div className="col-md-3">
                             <label>Nota dos Testes:</label>
-                            <input type="number" className="form-control"
+                            <input type="number" min="0" max="20" step="0.1" className="form-control"
                                 value={formData.notaTeste}
                                 onChange={(e) => setFormData({ ...formData, notaTeste: e.target.value })} />
                         </div>
                         <div className="col-md-3">
                             <label>(%) Testes:</label>
-                            <input type="number" className="form-control"
+                            <input type="number" min="0" max="100" className="form-control"
                                 value={formData.testes}
                                 onChange={(e) => setFormData({ ...formData, testes: e.target.value })} />
                         </div>
@@ -103,13 +105,13 @@ function Notas() {
                     <div className="row p-2">
                         <div className="col-md-3">
                             <label>Nota dos Trabalhos:</label>
-                            <input type="number" className="form-control"
+                            <input type="number" min="0" max="20" step="0.1" className="form-control"
                                 value={formData.notaTrabalho}
                                 onChange={(e) => setFormData({ ...formData, notaTrabalho: e.target.value })} />
                         </div>
                         <div className="col-md-3">
                             <label>(%) Trabalhos:</label>
-                            <input type="number" className="form-control"
+                            <input type="number" min="0" max="100" className="form-control"
                                 value={formData.trabalhos}
                                 onChange={(e) => setFormData({ ...formData, trabalhos: e.target.value })} />
                         </div>
@@ -120,13 +122,13 @@ function Notas() {
                     <div className="row p-2">
                         <div className="col-md-3">
                             <label>Nota das Atitudes:</label>
-                            <input type="number" className="form-control"
+                            <input type="number" min="0" max="20" step="0.1" className="form-control"
                                 value={formData.notaAtitudes}
                                 onChange={(e) => setFormData({ ...formData, notaAtitudes: e.target.value })} />
                         </div>
                         <div className="col-md-3">
-                            <label>(%) Trabalhos:</label>
-                            <input type="number" className="form-control"
+                            <label>(%) Atitudes:</label>
+                            <input type="number" min="0" max="100" className="form-control"
                                 value={formData.atitudes}
                                 onChange={(e) => setFormData({ ...formData, atitudes: e.target.value })} />
                         </div>
